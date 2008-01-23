@@ -34,3 +34,5 @@ class xbkModule_Record extends Doctrine_Record
 
 }
 }}}
+
+Вся дальнейшая работа с данными производится как с обычными объектами.

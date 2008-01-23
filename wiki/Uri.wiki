@@ -19,7 +19,13 @@ $uri3 = $uri->build(Array('param3' => 'value3', 'param4' => 'value4')); // Во�
 $uri->addInheritedParameters('param1&param2');
 $uri4 = $uri->build(); // Возвращает '/path/to/section/?param1=value1&param2=value2'
 $uri5 = $uri->build('param3=value3&param4=value4'); // Возвращает '/path/to/section/?param1=value1&param2=value2&param3=value3&param4=value4''
-// Упразднение наследуемых параметров
+// Исключение наследуемых параметров
 $uri->removeInheritedParameters('param1&param2');
 $uri5 = $uri->build(); // Возвращает '/path/to/section/
+// Установка списка наследуемых параметров в виде массива
+$uri->addInheritedParameters(Array('param1', 'param2'));
+$uri6 = $uri->build(); // Возвращает '/path/to/section/?param1=value1&param2=value2'
+// Исключение наследуемых параметров в виде массива
+$uri->removeInheritedParameters(Array('param1', 'param2'));
+$uri7 = $uri->build(); // Возвращает '/path/to/section/
 }}}

@@ -4,3 +4,12 @@
 {{{
 http://my.domain.com/path/to/section/?param1=value1&param2=value2#fragment
 }}}
+
+Рассмотрим несколько примеров работы с вышеуказанной ссылкой, принимая во внимания, что она также является текущим внешним запросом.
+
+{{{
+$uri =& $this->factory('xbkUri');
+$uri1 = $uri->build(); // Возвращает '/path/to/section/'
+$uri2 = $uri->build('param2=value2&param3=value3'); // Возвращает '/path/to/section/?param2=value2&&param3=value3'
+$uri3 = $uri->build(Array('param3' => 'value3', 'param4' => 'value4')); // Возвращает '/path/to/section/?param3=value3&&param4=value4'
+}}}

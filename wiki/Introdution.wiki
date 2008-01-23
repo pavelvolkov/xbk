@@ -19,7 +19,7 @@ class xbkMyContextObject extends xbkContextObject
 
   public function __construct2 ()
   {
-    $MyOtherContextObject = $this->factory('xbkMyOtherContextObject');
+    $MyOtherContextObject =& $this->factory('xbkMyOtherContextObject');
   }
 
 }
@@ -61,7 +61,7 @@ class xbkMyOtherContextObject extends xbkContextObject
 
   public function __construct2 ()
   {
-    $MyContextObject = $this->factory('xbkMyContextObject', 'test1', 'test2');
+    $MyContextObject =& $this->factory('xbkMyContextObject', 'test1', 'test2');
 
     $var1 = $MyContextObject->getVar1(); // Равно 'test1'
     $var2 = $MyContextObject->getVar2(); // Равно 'test2'

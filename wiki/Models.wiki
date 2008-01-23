@@ -1,0 +1,36 @@
+=Объектные модели данных=
+
+Работа с базой данных дважды абстрагирована через расширение PDO и библиотеку "ORM Doctrine": http://phpdoctrine.org
+
+Модели данных со всеми внутренными взаимосвязями представляются отдельными классами и хранятся в подпапке "models" внутри папки модуля. Инсталляция модуля начинается с генерации необходимых таблиц, соответствующих схеме предоставленной структуры данных.
+К именам таблиц прибавляется префикс, указанный в конфигурационном файле. Таким образом структура данных описыватся по селдующему принципу:
+{{{
+class xbkModule_Record extends Doctrine_Record
+{
+
+    public function setUp()
+    {
+        $this->hasMany('xbkSection_Record as Section', array('local' => 'id', 'foreign' => 'module_id'));
+        $this->hasMany('xbkTemplateModule_Record as TemplateModule', array('local' => 'id', 'foreign' => 'module_id'));
+        $this->hasMany('xbkEvent_Record as Event', array('local' => 'id', 'foreign' => 'module_id'));
+        $this->hasMany('xbkEventHandler_Record as EventHandler', array('local' => 'id', 'foreign' => 'module_id'));
+        $this->hasMany('xbkLang_Record as Lang', array('local' => 'id', 'foreign' => 'module_id'));
+    }
+
+    public function setTableDefinition()
+    {
+    	global $CONFIG;
+
+    	$this->setTableName($CONFIG['db']['table_prefix'].'core_modules');
+
+        $this->hasColumn('group', 'string', 20, array('notnull' => true));
+        $this->hasColumn('name', 'string', 50, array('notnull' => true, 'unique' => true));
+        $this->hasColumn('version', 'string', 20);
+        $this->hasColumn('xbk_version', 'string', 20);
+        $this->hasColumn('config', 'string', null);
+        $this->hasColumn('current_migration', 'integer', 3);
+        $this->hasColumn('active', 'boolean', null, array('default' => false));
+    }
+
+}
+}}}

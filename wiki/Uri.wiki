@@ -9,7 +9,16 @@ http://my.domain.com/path/to/section/?param1=value1&param2=value2#fragment
 
 {{{
 $uri =& $this->factory('xbkUri');
+// Вывод текущей ссылки, исключая строку параметров, так как наследование пока не задано
 $uri1 = $uri->build(); // Возвращает '/path/to/section/'
-$uri2 = $uri->build('param2=value2&param3=value3'); // Возвращает '/path/to/section/?param2=value2&&param3=value3'
-$uri3 = $uri->build(Array('param3' => 'value3', 'param4' => 'value4')); // Возвращает '/path/to/section/?param3=value3&&param4=value4'
+// Сообщает дополнительные параметры
+$uri2 = $uri->build('param3=value3&param4=value4'); // Возвращает '/path/to/section/?param3=value3&param4=value4'
+// Сообщает дополнительные параметры в виде массива
+$uri3 = $uri->build(Array('param3' => 'value3', 'param4' => 'value4')); // Возвращает '/path/to/section/?param3=value3&param4=value4'
+// Установка списка наследуемых параметров
+$uri->addInheritedParameters('param1&param2');
+$uri4 = $uri->build(); // Возвращает '/path/to/section/?param2=value2&param3=value3'
+// Упразднение наследуемых параметров
+$uri->removeInheritedParameters('param1&param2');
+$uri5 = $uri->build(); // Возвращает '/path/to/section/
 }}}

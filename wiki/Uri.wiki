@@ -9,7 +9,7 @@ http://my.domain.com/path/to/section/?param1=value1&param2=value2#fragment
 
 {{{
 $uri =& $this->factory('xbkUri');
-// Вывод текущей ссылки, исключая строку параметров, так как наследование пока не задано
+// Вывод текущей ссылки, исключая строку параметров, так как наследование ещё не было задано
 $uri1 = $uri->build(); // Возвращает '/path/to/section/'
 // Сообщает дополнительные параметры
 $uri2 = $uri->build('param3=value3&param4=value4'); // Возвращает '/path/to/section/?param3=value3&param4=value4'

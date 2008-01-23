@@ -2,7 +2,7 @@
 
 Работа с uri подобного вида является главным назначением данного класса:
 {{{
-http://my.domain.com/path/to/section/?param1=value1&param2=value2#fragment
+http://my.domain.com/path/to/section/?param1=value1&param2=value2
 }}}
 
 Рассмотрим несколько примеров работы с вышеуказанной ссылкой, принимая во внимание, что она является текущим внешним запросом.
@@ -27,5 +27,17 @@ $uri->addInheritedParameters(Array('param1', 'param2'));
 $uri6 = $uri->build(); // Возвращает '/path/to/section/?param1=value1&param2=value2'
 // Исключение наследуемых параметров в виде массива
 $uri->removeInheritedParameters(Array('param1', 'param2'));
-$uri7 = $uri->build(); // Возвращает '/path/to/section/
+$uri7 = $uri->build(); // Возвращает '/path/to/section/'
+// Переход на секцию вверх
+$uri->gotoParentSection();
+$uri8 = $uri->build(); // Возвращает '/path/to/'
+// Переход на секцию вниз
+$uri->gotoChildSection('section2');
+$uri9 = $uri->build(); // Возвращает '/path/to/section2/'
+// Переход на смежную секцию
+$uri->gotoSideSection('section3');
+$uri9 = $uri->build(); // Возвращает '/path/to/section3/'
+// Переход на секцию
+$uri->gotoSection('/another/path/to/another/section/');
+$uri10 = $uri->build(); // Возвращает '/another/path/to/another/section/'
 }}}

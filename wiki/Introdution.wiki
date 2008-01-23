@@ -47,7 +47,7 @@ class xbkMyOtherContextObject extends xbkContextObject
 
   public function __construct2 ()
   {
-    $MyContextObject = $this->factory('xbkMyOtherContextObject', $param1, $param2);
+    $MyContextObject = $this->factory('xbkMyContextObject', $param1, $param2);
   }
 
 }

@@ -43,6 +43,30 @@
 </html></xbk:tmpl>
 }}}
 
+Сборка внутри класса секции:
+{{{
+class xbk404Error extends xbkSection
+{
+
+    /**
+     * Конструктор класса
+     *
+     * @access      public
+     */
+    public function __construct2()
+    {
+    	// Заголовок
+    	$this->setTitle($this->_LANG['error404']);
+
+        // Содержимое
+        $tmpl = $this->template();
+        $tmpl->readTemplatesFromInput('404');
+        $this->setContent($tmpl->getParsedTemplate('body'));
+    }
+
+}
+}}}
+
 Результат:
 {{{
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

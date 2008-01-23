@@ -49,5 +49,5 @@ $uri12 = $uri->build(); // Возвращает '/another/path/to/another/sectio
 // Получить текущий протокол соединения
 $currentProtocol = $uri->getProtocol(); // Возвращает 'http'
 // Получить текущий путь в виде перечня секций в порядке убывания
-$currentSection = $uri->getCurrentSection(); // Возвращает Array('another', 'path', 'to', 'another', 'section/')
+$currentSection = $uri->getCurrentSection(); // Возвращает Array('another', 'path', 'to', 'another', 'section')
 }}}

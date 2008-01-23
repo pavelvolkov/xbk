@@ -27,6 +27,8 @@ $uri->addInheritedParameters(Array('param1', 'param2'));
 $uri6 = $uri->build(); // Возвращает '/path/to/section/?param1=value1&param2=value2'
 // Исключение наследуемых параметров в виде массива
 $uri->removeInheritedParameters(Array('param1', 'param2'));
+// Исключение всех наследуемых параметров
+$uri->removeAllInheritedParameters();
 $uri7 = $uri->build(); // Возвращает '/path/to/section/'
 // Переход на секцию вверх
 $uri->gotoParentSection();

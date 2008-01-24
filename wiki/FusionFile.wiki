@@ -24,10 +24,19 @@
         <section type="page" name="query" enforceSSL="true" class="xbkMyModule_QuerySection" />
         <section type="image" name="image" class="xbkMyModule_ImageSection" />
     </sections>
+    <blocks>
+        <block name="myBlock" class="xbkMyModule_MyBlock" editClass="xbkMyModule_MyBlockEdit" />
+    </blocks>
     <templateModules>
         <templateModule type="function" name="MyFunction" class="xbkMyModule_MyTemplateFunction" />
         <templateModule type="modifier" name="MyModifier" class="xbkMyModule_MyTemplateModifier" />
     </templateModules>
+    <extensions>
+        <extension name="myExtension" class="xbkOtherModule_MyExtension" extensionPoint="myExtensionPoint" extensionPointModule="other_module" />
+    </extensions>
+    <extensionPoints>
+        <extensionPoint name="simpleExtensionPoint" class="xbkMyModule_SimpleExtensionPoint" />
+    </extensionPoints>
     <events>
         <event name="myEvent" class="xbkMyModule_MyEvent" />
     </events>

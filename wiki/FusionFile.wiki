@@ -17,11 +17,11 @@
         <autoload class="xbkMyModule_Loader" method="autoload" />
     </uses>
     <sections>
-        <section type="content" name="main" class="xbkMyModule_MainSection">
+        <section type="content" name="main" enforceNonSSL="true" class="xbkMyModule_MainSection">
             <section type="content" name="sub1" class="xbkMyModule_Sub1Section" />
             <section type="content" name="sub2" class="xbkMyModule_Sub2Section" />
         </section>
-        <section type="page" name="query" class="xbkMyModule_QuerySection" />
+        <section type="page" name="query" enforceSSL="true" class="xbkMyModule_QuerySection" />
         <section type="image" name="image" class="xbkMyModule_ImageSection" />
     </sections>
     <templateModules>

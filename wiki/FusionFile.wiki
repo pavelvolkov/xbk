@@ -25,15 +25,14 @@
         <section type="image" name="image" class="xbkMyModule_ImageSection" />
     </sections>
     <templateModules>
-        <templateModule type="reader" name="xbkFile" className="xbkTemplateFileReader" />
-        <templateModule type="function" name="Css" className="xbkTemplateCssFunction" />
-        <templateModule type="function" name="Js" className="xbkTemplateJsFunction" />
+        <templateModule type="function" name="MyFunction" class="xbkMyModule_MyTemplateFunction" />
+        <templateModule type="modifier" name="MyModifier" class="xbkMyModule_MyTemplateModifier" />
     </templateModules>
     <events>
-        <event name="userDelete" className="xbkUserDeleteEvent" />
+        <event name="myEvent" class="xbkMyModule_MyEvent" />
     </events>
     <eventHandlers>
-        <eventHandler name="userDeleteHandler" className="xbkUserDeleteEventHandler" eventName="userDelete" eventModule="core" />
+        <eventHandler name="nodeDeleteHandler" class="xbkMyModule_NodeDeleteHandler" event="nodeDelete" module="my_base_module1" />
     </eventHandlers>
 </collection>
 }}}

@@ -1,1 +1,35 @@
 =Интеграционный файл module.xml=
+
+Понятие "модуль" в данной системе отличается от стереотипного аналога в обычных CMS. Это полноценный программный модуль, понимаемый значительно шире. Схема интеграции в системе описывается в специальном интеграционном файле module.xml.
+Рассмотрим структуру файла на следующем примере:
+
+{{{
+<?xml version="1.0" encoding="utf-8" ?>
+<collection xbkVersion="1.0">
+    <abstract>
+        <name>my_module</name>
+        <group>my_group</group>
+        <version>2.1</version>
+        <xbkVersion>1.0</xbkVersion>
+    </abstract>
+    <sections>
+        <section type="content" name="main" className="xbkMyModule_MainSection">
+            <section type="content" name="main" className="xbkSuperadminMain" />
+            <section type="content" name="core" className="xbkSuperadminCore" />
+        </section>
+        <section type="content" name="404" className="xbk404Error" />
+        <section type="content" name="403" className="xbk403Error" />
+    </sections>
+    <templateModules>
+        <templateModule type="reader" name="xbkFile" className="xbkTemplateFileReader" />
+        <templateModule type="function" name="Css" className="xbkTemplateCssFunction" />
+        <templateModule type="function" name="Js" className="xbkTemplateJsFunction" />
+    </templateModules>
+    <events>
+        <event name="userDelete" className="xbkUserDeleteEvent" />
+    </events>
+    <eventHandlers>
+        <eventHandler name="userDeleteHandler" className="xbkUserDeleteEventHandler" eventName="userDelete" eventModule="core" />
+    </eventHandlers>
+</collection>
+}}}

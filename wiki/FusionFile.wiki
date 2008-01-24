@@ -1,6 +1,6 @@
 =Интеграционный файл module.xml=
 
-Понятие "модуль" в данной системе отличается от стереотипного аналога в обычных CMS. Это полноценный программный модуль, понимаемый значительно шире. Схема интеграции в системе описывается в специальном интеграционном файле module.xml.
+Понятие "модуль" в данной системе отличается от стереотипного аналога в обычных CMS. Это полноценный программный модуль, понимаемый значительно шире. Схема интеграции модуля в системе описывается в специальном файле module.xml.
 Рассмотрим структуру файла на следующем примере:
 
 {{{
@@ -12,13 +12,17 @@
         <version>2.1</version>
         <xbkVersion>1.0</xbkVersion>
     </abstract>
+    <uses>
+        <dependencies modules="my_base_module1,my_base_module2" />
+        <autoload class="xbkMyModule_Loader" method="autoload" />
+    </uses>
     <sections>
-        <section type="content" name="main" className="xbkMyModule_MainSection">
-            <section type="content" name="main" className="xbkSuperadminMain" />
-            <section type="content" name="core" className="xbkSuperadminCore" />
+        <section type="content" name="main" class="xbkMyModule_MainSection">
+            <section type="content" name="sub1" class="xbkMyModule_Sub1Section" />
+            <section type="content" name="sub2" class="xbkMyModule_Sub2Section" />
         </section>
-        <section type="content" name="404" className="xbk404Error" />
-        <section type="content" name="403" className="xbk403Error" />
+        <section type="page" name="query" class="xbkMyModule_QuerySection" />
+        <section type="image" name="image" class="xbkMyModule_ImageSection" />
     </sections>
     <templateModules>
         <templateModule type="reader" name="xbkFile" className="xbkTemplateFileReader" />

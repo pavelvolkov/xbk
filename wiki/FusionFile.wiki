@@ -41,7 +41,7 @@
         <event name="myEvent" class="xbkMyModule_MyEvent" />
     </events>
     <eventHandlers>
-        <eventHandler name="nodeDeleteHandler" class="xbkMyModule_NodeDeleteHandler" event="nodeDelete" eventModule="my_base_module1" />
+        <eventHandler name="nodeDeleteHandler" class="xbkMyModule_NodeDeleteHandler" event="nodeDelete" eventModule="my_base_module" />
     </eventHandlers>
 </declaration>
 }}}

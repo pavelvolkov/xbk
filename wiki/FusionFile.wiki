@@ -5,7 +5,7 @@
 
 {{{
 <?xml version="1.0" encoding="utf-8" ?>
-<collection xbkVersion="1.0">
+<declaration xbkVersion="1.0">
     <abstract>
         <name>my_module</name>
         <group>my_group</group>
@@ -34,5 +34,5 @@
     <eventHandlers>
         <eventHandler name="nodeDeleteHandler" class="xbkMyModule_NodeDeleteHandler" event="nodeDelete" eventModule="my_base_module1" />
     </eventHandlers>
-</collection>
+</declaration>
 }}}

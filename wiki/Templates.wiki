@@ -59,8 +59,7 @@ class xbk404Error extends xbkSection
     	$this->setTitle($this->_LANG['error404']);
 
         // Содержимое
-        $tmpl = $this->template();
-        $tmpl->readTemplatesFromInput('404');
+        $tmpl = $this->template('404');
         $this->setContent($tmpl->getParsedTemplate('body'));
     }
 

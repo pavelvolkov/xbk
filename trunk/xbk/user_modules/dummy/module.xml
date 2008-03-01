@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<declaration xbkVersion="0.1">
+    <abstract>
+        <name>dummy</name>
+        <version>1.0</version>
+        <xbkVersion>0.1</xbkVersion>
+        <migration>0</migration>
+        <infoClass>xbkDummyInfo</infoClass>
+    </abstract>
+    <sections>
+        <section type="content" name="dummy" class="xbkDummy_MainSection">
+            <section type="content" name="main" class="xbkDummy_MainSection" />
+        </section>
+        <section type="page" name="404" class="xbk404Error" />
+        <section type="content" name="403" class="xbk403Error" />
+    </sections>
+</declaration>

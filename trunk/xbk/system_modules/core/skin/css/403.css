@@ -1,0 +1,12 @@
+.err403-403 {
+    font-size: 200px;
+    font-weight: bold;
+    color: #ff0000;
+    font-family: Verdana, Arial;
+    text-align: center
+}
+
+.err403-text {
+    text-align: center;
+    padding-top: 20px;
+}

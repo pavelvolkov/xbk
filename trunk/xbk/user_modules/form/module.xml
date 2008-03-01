@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<declaration xbkVersion="0.1">
+    <abstract>
+        <name>form</name>
+        <version>1.0</version>
+        <xbkVersion>0.1</xbkVersion>
+        <migration>0</migration>
+    </abstract>
+    <sections>
+        <section type="content" name="form_test" class="xbkForm_Test" />
+    </sections>
+</declaration>

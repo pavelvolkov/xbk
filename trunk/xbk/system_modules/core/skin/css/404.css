@@ -1,0 +1,11 @@
+.err404-404 {	font-size: 200px;
+	font-weight: bold;
+	color: #ff0000;
+	font-family: Verdana, Arial;
+	text-align: center
+}
+
+.err404-text {
+	text-align: center;
+	padding-top: 20px;
+}

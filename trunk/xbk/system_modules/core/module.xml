@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<declaration xbkVersion="0.3">
+    <meta>
+        <project>core</project>
+        <version>1.1</version>
+        <xbkVersion>0.3</xbkVersion>
+        <migration>2</migration>
+        <class>xbkCoreInfo</class>
+    </meta>
+    <sections>
+        <section type="content" name="xbk_index" class="xbkIndex" />
+        <section type="content" name="xbk" class="xbkSuperadminLogin">
+            <section type="content" name="main" class="xbkSuperadminMain" />
+            <section type="content" name="core" class="xbkSuperadminCore" />
+            <section type="content" name="modules" class="xbkSuperadminModules" />
+            <section type="content" name="phpinfo" class="xbkSuperadminPhpinfo" />
+            <section type="page" name="phpinfo_phpinfo" class="xbkSuperadminPhpinfoPage" />
+            <section type="page" name="performing_migration" class="xbkSuperadminPerformingMigration" />
+        </section>
+        <section type="content" name="404" class="xbk404Error" />
+        <section type="content" name="403" class="xbk403Error" />
+    </sections>
+    <templateModules>
+        <templateModule type="reader" name="xbkFile" class="xbkTemplateFileReader" />
+        <templateModule type="function" name="Css" class="xbkTemplateCssFunction" />
+        <templateModule type="function" name="Js" class="xbkTemplateJsFunction" />
+    </templateModules>
+</declaration>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<declaration xbkVersion="0.1">
+    <abstract>
+        <name>migration_test</name>
+        <version>1.0</version>
+        <xbkVersion>0.1</xbkVersion>
+        <migration>1</migration>
+    </abstract>
+</declaration>

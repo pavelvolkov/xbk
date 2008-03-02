@@ -1,0 +1,16 @@
+body {
+    background-color: #EEEEEE;
+    margin: 0px;
+    padding: 20px;
+}
+td {
+    font-family: 'Book Antiqua';
+    font-size: 15px;
+    color: #555555;
+}
+.input {
+    width: 100px;
+    border: 1px solid #555555;
+    font-family: 'Courier New';
+    font-size: 15px;
+}

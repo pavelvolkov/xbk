@@ -1,76 +1,0 @@
-.superadmin-modules-tbl-title {	font-weight: bold;
-	text-align: left;
-	font-family: Tahoma, Verdana, Arial;}
-
-.superadmin-modules-tbl-td {	font-family: Verdana, Arial;
-	font-size: 11px;
-}
-
-.superadmin-modules-module-info-div {	border: 2px solid #55AA44;
-	margin-bottom: 20px;
-	padding-bottom: 5px;
-	background-color: #DDFFCC;}
-
-.superadmin-modules-module-info-td {
-	padding: 5px;
-	padding-bottom: 0px;
-	font-family: Verdana;
-	font-size: 11px;
-	color: #115500;
-}
-
-.superadmin-modules-module-migration-tbl {    border: 1px solid #55AA44;
-    margin-top: 5px;
-    height: 20px;
-}
-
-.superadmin-modules-module-migration-td {	padding: 5px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-    font-family: Verdana;
-	font-size: 11px;
-}
-
-.superadmin-modules-module-migration-outside {
-	padding: 5px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-    font-family: Verdana;
-	font-size: 11px;
-}
-
-.superadmin-modules-module-migration-normal {
-	padding: 5px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-    font-family: Verdana;
-	font-size: 11px;
-	border: 1px solid #55AA44;
-	background-color: #FFFF00;
-	color: #000000;
-}
-
-.superadmin-modules-module-migration-current {	padding: 5px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-    font-family: Verdana;
-	font-size: 11px;
-	border: 1px solid #55AA44;
-}
-
-.superadmin-modules-module-migration-required {
-	padding: 5px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-    font-family: Verdana;
-	font-size: 11px;
-	background-color: #FFFF00;
-	color: #000000;
-	cursor: hand;
-	border: 1px solid #FFEE00;
-}
-
-.superadmin-modules-module-migration-required-a {
-	text-decoration: none;
-	color: #000000;
-}

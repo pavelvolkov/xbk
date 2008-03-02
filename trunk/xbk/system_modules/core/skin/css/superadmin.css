@@ -1,46 +1,0 @@
-.superadmin-maintable {	background-color: #FFFFFF;
-	border: 3px solid #BBBBBB;}
-
-.superadmin-ttitle {	padding: 30px;	padding-top: 20px;
-	padding-bottom: 0px;	margin: 0px;
-	text-align: left;	/* border-bottom: 1px solid #BBBBBB; */
-	color: #BBBBBB;
-	font-size: 60px;
-	font-weight: bold;
-	font-family: 'Courier New', 'Book Antiqua';}
-
-.superadmin-selected {
-	text-decoration: overline;
-}
-
-.superadmin-trightitle {
-	padding: 30px;
-	padding-bottom: 0px;
-	margin: 0px;
-	text-align: right;
-}
-
-.superadmin-content {
-	padding: 20px;
-	text-align: left;
-}
-
-.superadmin-version {
-	padding: 20px;
-	padding-top: 0px;
-	text-align: right;
-}
-
-a:link {color: #000099}
-a:visited {color: #000077}
-a:active {color: #0000bb}
-a:hover {color: #0000ff; text-decoration: none}
-
-.xbk-submit {	padding: 3px;
-	padding-left: 10px;
-	padding-right: 10px;	background-color: #EEEEEE;
-	border: 2px solid #000000;
-	font-family: 'Courier New';
-	font-weight: bold;
-	font-size: 15px;
-	color: #000000;}

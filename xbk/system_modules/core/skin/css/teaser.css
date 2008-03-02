@@ -1,0 +1,53 @@
+.xbk-teaser-ok-wrapper {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    clear: both;
+}
+
+.xbk-teaser-ok-tbl {
+    background-color: #EEFFEE;
+    border: 2px solid #00FF00;
+}
+
+.xbk-teaser-ok-text {
+    color: #007700;
+}
+
+.xbk-teaser-notice-wrapper {	padding-top: 10px;
+	padding-bottom: 10px;
+	clear: both;}
+
+.xbk-teaser-notice-tbl {	background-color: #FFFFFF;
+	border: 1px solid #000000;}
+
+.xbk-teaser-notice-text {	color: #000000;}
+
+.xbk-teaser-warning-wrapper {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	clear: both;
+}
+
+.xbk-teaser-warning-tbl {
+	background-color: #FFFF00;
+	border: 2px solid #FFAA00;
+}
+
+.xbk-teaser-warning-text {
+	color: #AA5500;
+}
+
+.xbk-teaser-error-wrapper {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	clear: both;
+}
+
+.xbk-teaser-error-tbl {
+	background-color: #FFDDBB;
+	border: 2px solid #FF0000;
+}
+
+.xbk-teaser-error-text {
+	color: #550000;
+}

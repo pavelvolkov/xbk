@@ -5,55 +5,51 @@
 
 {{{
 <?xml version="1.0" encoding="utf-8" ?>
-<declaration xbkVersion="1.0">
-    <abstract>
-        <name>my_module</name>
-        <group>my_group</group>
+<declaration xbkVersion="3.0">
+    <meta>
+        <project>my_module</project>
         <version>2.1</version>
         <xbkVersion>1.0</xbkVersion>
-    </abstract>
+        <migration>7</migration>
+        <class>MyModule_Meta</class>
+    </meta>
     <uses>
         <dependencies modules="my_base_module1,my_base_module2" />
         <autoload class="xbkMyModule_Loader" method="autoload" />
     </uses>
     <sections>
-        <section type="content" name="main" enforceNonSSL="true" class="xbkMyModule_MainSection">
-            <section type="content" name="sub1" class="xbkMyModule_Sub1Section" />
-            <section type="content" name="sub2" class="xbkMyModule_Sub2Section" />
+        <section type="node" name="main" enforceNonSSL="true" class="MyModule_MainSection">
+            <section type="node" name="sub1" class="MyModule_Sub1Section" />
+            <section type="node" name="sub2" class="MyModule_Sub2Section" />
         </section>
-        <section type="page" name="query" enforceSSL="true" class="xbkMyModule_QuerySection" />
-        <section type="image" name="image" class="xbkMyModule_ImageSection" />
+        <section type="page" name="query" enforceSSL="true" class="MyModule_QuerySection" />
+        <section type="image" name="image" class="MyModule_ImageSection" />
     </sections>
     <blocks>
-        <block name="myBlock" class="xbkMyModule_MyBlock" editClass="xbkMyModule_MyBlockEdit" />
+        <block name="myBlock" class="MyModule_MyBlock" editClass="MyModule_MyBlockEdit" />
     </blocks>
     <templateModules>
-        <templateModule type="function" name="MyFunction" class="xbkMyModule_MyTemplateFunction" />
-        <templateModule type="modifier" name="MyModifier" class="xbkMyModule_MyTemplateModifier" />
+        <templateModule type="function" name="MyFunction" class="MyModule_MyTemplateFunction" />
+        <templateModule type="modifier" name="MyModifier" class="MyModule_MyTemplateModifier" />
     </templateModules>
     <extensions>
-        <extension name="myExtension" class="xbkOtherModule_MyExtension" extensionPoint="myExtensionPoint" extensionPointModule="other_module" />
+        <extension name="myExtension" class="OtherModule_MyExtension" extensionPoint="myExtensionPoint" extensionPointModule="other_module" />
     </extensions>
     <extensionPoints>
-        <extensionPoint name="simpleExtensionPoint" class="xbkMyModule_SimpleExtensionPoint" />
+        <extensionPoint name="simpleExtensionPoint" class="MyModule_SimpleExtensionPoint" />
     </extensionPoints>
-    <events>
-        <event name="myEvent" class="xbkMyModule_MyEvent" />
-    </events>
-    <eventHandlers>
-        <eventHandler name="nodeDeleteHandler" class="xbkMyModule_NodeDeleteHandler" event="nodeDelete" eventModule="my_base_module" />
-    </eventHandlers>
 </declaration>
 }}}
 
-Атрибут "xbkVersion" корневого тега "declaration" означает версию системы, в контексте которой понимается формат и производится весь дальнейший разбор файла. Группа тегов "abstract" описывает установочную информацию:
-  * *name* - имя текущего модуля, должно совпадать с именем папки;
-  * *group* - группа модулей, к которой принадлежит данный модуль;
+Атрибут "xbkVersion" корневого тега "declaration" означает версию системы, в контексте которой понимается формат и производится весь дальнейший разбор файла. Группа тегов "meta" описывает установочную информацию:
+  * *project* - имя текущего модуля, должно совпадать с именем папки;
   * *version* - версия модуля;
   * *xbkVersion* - версия системы с момента последнего тестирования модуля.
-Вся нижеследующая информация предоставляется опционально. Блок тегов "uses" содержит указание на модули, от которых зависит текущий модуль, перечисленные через запятую, а также дополнительный метод, добавляемый в стек автозагрузки в случае необходимости. Модуль "core", от которого зависят все абсолютно модули, в теге "dependencies" можно не указывать. Таким образом, если модуль не зависит больше ни от каких модулей, кроме главного, и использует стандартные правила автозагрузки классов, то блок тегов "uses" можно вообще не использовать.
+  * *migration* - номер требуемой миграции;
+  * *class* - класс мета-информации модуля;
+Вся нижеследующая информация предоставляется опционально. Блок тегов "uses" содержит указание на модули, от которых зависит текущий модуль, а также дополнительный метод, добавляемый в стек автозагрузки в случае необходимости. Модуль "core", от которого зависят все абсолютно модули, в теге "dependencies" можно не указывать. Таким образом, если модуль не зависит больше ни от каких модулей, кроме главного, использует стандартные правила автозагрузки классов, то блок тегов "uses" можно не использовать.
 Ниже идёт описание секций. Секция - это раздел сайта, которому соответствует определённый класс. Секция может быть одного из следующих типов:
-  * *content* - состоит из содержания, заголовка, описания и ключевых слов. Заключается в отдельный общий макет, доступ к которому не имеет. Макетом для секции данной разновидности служит шаблон системного модуля "page".
+  * *node* - состоит из содержания, заголовка, описания и ключевых слов. Заключается в отдельный общий макет, доступ к которому не имеет. Макетом для секции данной разновидности служит шаблон системного модуля "page".
   * *page* - представляет собой самостоятельную веб-страницу произвольного шаблона.
   * *document* - любой другой текстовый документ, типа, "text/xml", "text/css" и др...
   * *image* - бинарный файл графического изображения поддерживаемого формата (jpeg, gif, png, bmp).

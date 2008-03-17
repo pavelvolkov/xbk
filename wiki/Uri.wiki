@@ -55,19 +55,22 @@ $uri9 = $uri->build(); // Возвращает '/path/to/section3/'
 $uri->goto('/another/path/to/another/section/');
 $uri10 = $uri->build(); // Возвращает '/another/path/to/another/section/'
 
-// Установка другого протокола соединения (Псевдоним - "setScheme()")
-$uri->setProtocol('https');
+// Установка другого протокола соединения
+$uri->setScheme('https');
 $uri11 = $uri->build(); // Возвращает 'https://my.domain.com/another/path/to/another/section/'
 
 // Переключение протокола соединения на противоположный
-$uri->swapProtocol();
+$uri->swapScheme();
 $uri12 = $uri->build(); // Возвращает '/another/path/to/another/section/'
 
 // Получить текущий протокол соединения
-$currentProtocol = $uri->getProtocol(); // Возвращает 'http'
+$currentScheme = $uri->getScheme(); // Возвращает 'http'
 
-// Получить текущий путь в виде перечня секций в порядке убывания
-$currentSection = $uri->getCurrentSection(); // Возвращает Array('another', 'path', 'to', 'another', 'section')
+// Получить текущий путь
+$currentPath = $uri->getPath(); // Возвращает another/path/to/another/section/
+
+// Получить текущий путь в виде массива веток в порядке убывания
+$currentPathArray = $uri->getPathArray(); // Возвращает Array('another', 'path', 'to', 'another', 'section')
 
 // Устанавливает текущую ссылку
 $uri->setThisUri();

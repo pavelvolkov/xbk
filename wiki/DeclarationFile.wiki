@@ -33,7 +33,7 @@
         <templateModule type="modifier" name="MyModifier" class="MyModule_MyTemplateModifier" />
     </templateModules>
     <extensions>
-        <extension name="myExtension" class="OtherModule_MyExtension" extensionPoint="myExtensionPoint" extensionPointModule="other_module" />
+        <extension name="myExtension" class="OtherModule_MyExtension" extensionPoint="myExtensionPoint" extensionPointModule="other_module" weight="4" />
     </extensions>
     <extensionPoints>
         <extensionPoint name="simpleExtensionPoint" class="MyModule_SimpleExtensionPoint" />

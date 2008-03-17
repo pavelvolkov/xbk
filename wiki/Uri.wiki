@@ -9,49 +9,66 @@ http://my.domain.com/path/to/section/?param1=value1&param2=value2
 
 {{{
 $uri =& $this->factory('xbkUri');
+
 // Вывод текущей ссылки, исключая строку параметров, так как наследование ещё не было задано
 $uri1 = $uri->build(); // Возвращает '/path/to/section/'
+
 // Сообщает дополнительные параметры
 $uri2 = $uri->build('param3=value3&param4=value4'); // Возвращает '/path/to/section/?param3=value3&param4=value4'
+
 // Сообщает дополнительные параметры в виде массива
 $uri3 = $uri->build(Array('param3' => 'value3', 'param4' => 'value4')); // Возвращает '/path/to/section/?param3=value3&param4=value4'
+
 // Установка списка наследуемых параметров
-$uri->addInheritedParameters('param1&param2');
+$uri->inherit('param1&param2');
 $uri4 = $uri->build(); // Возвращает '/path/to/section/?param1=value1&param2=value2'
-$uri5 = $uri->build('param3=value3&param4=value4'); // Возвращает '/path/to/section/?param1=value1&param2=value2&param3=value3&param4=value4''
-// Исключение наследуемых параметров
-$uri->removeInheritedParameters('param1&param2');
+$uri5 = $uri->build('param3=value3&param4=value4'); // Возвращает '/path/to/section/?param1=value1&param2=value2&param3=value3&param4=value4'
+
+// Отмена наследования параметров
+$uri->noInherit('param1&param2');
 $uri5 = $uri->build(); // Возвращает '/path/to/section/
+
 // Установка списка наследуемых параметров в виде массива
-$uri->addInheritedParameters(Array('param1', 'param2'));
+$uri->inherit(Array('param1', 'param2'));
 $uri6 = $uri->build(); // Возвращает '/path/to/section/?param1=value1&param2=value2'
-// Исключение наследуемых параметров в виде массива
-$uri->removeInheritedParameters(Array('param1', 'param2'));
+
+// Отмена наследования параметров в виде массива
+$uri->noInherit(Array('param1', 'param2'));
+
 // Исключение всех наследуемых параметров
-$uri->removeAllInheritedParameters();
+$uri->noInheritAll();
 $uri7 = $uri->build(); // Возвращает '/path/to/section/'
+
 // Переход на уровень вверх
 $uri->gotoParent();
 $uri8 = $uri->build(); // Возвращает '/path/to/'
+
 // Переход на уровень вниз
 $uri->gotoChild('section2');
 $uri9 = $uri->build(); // Возвращает '/path/to/section2/'
+
 // Переход на соседнюю ветку смежного уровня
 $uri->gotoBrother('section3');
 $uri9 = $uri->build(); // Возвращает '/path/to/section3/'
+
 // Задание произвольного пути от корня
 $uri->goto('/another/path/to/another/section/');
 $uri10 = $uri->build(); // Возвращает '/another/path/to/another/section/'
+
 // Установка другого протокола соединения (Псевдоним - "setScheme()")
 $uri->setProtocol('https');
 $uri11 = $uri->build(); // Возвращает 'https://my.domain.com/another/path/to/another/section/'
+
 // Переключение протокола соединения на противоположный
 $uri->swapProtocol();
 $uri12 = $uri->build(); // Возвращает '/another/path/to/another/section/'
+
 // Получить текущий протокол соединения
 $currentProtocol = $uri->getProtocol(); // Возвращает 'http'
+
 // Получить текущий путь в виде перечня секций в порядке убывания
 $currentSection = $uri->getCurrentSection(); // Возвращает Array('another', 'path', 'to', 'another', 'section')
+
 // Устанавливает текущую ссылку
 $uri->setThisUri();
 $uri13 = $uri->build(); // Возвращает /path/to/section/?param1=value1&param2=value2

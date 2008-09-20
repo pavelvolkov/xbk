@@ -15,6 +15,7 @@
 ==Минимальный навык разработчика модулей==
  * Знание объектной модели PHP5
  * Знание основных принципов проектирования MVC и шаблоны проектирования
+ * Знание общепринятных стандартов кодирования
  * Знание вышеуказанных библиотек
 
 ==Минимальный навык администратора проектов==
@@ -98,7 +99,7 @@ class xbkMyOtherContextObject extends xbkContextObject
 
   public function __construct2 ()
   {
-    $MyContextObject =& $this->factory('xbkMyContextObject', 'test1', 'test2');
+    $MyContextObject = $this->factory('xbkMyContextObject', 'test1', 'test2');
 
     $var1 = $MyContextObject->getVar1(); // Равно 'test1'
     $var2 = $MyContextObject->getVar2(); // Равно 'test2'

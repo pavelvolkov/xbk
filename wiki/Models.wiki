@@ -1,9 +1,9 @@
 =Объектные модели данных=
 
-Работа с базой данных дважды абстрагирована через расширение PDO и библиотеку "ORM Doctrine": http://phpdoctrine.org
+Работа с базой данных абстрагирована через расширение PDO и библиотеку "ORM Doctrine": http://doctrine-project.org
 
-Модели данных со всеми внутренными взаимосвязями представляются отдельными классами и хранятся в подпапке "models" внутри папки модуля. Инсталляция модуля начинается с генерации необходимых таблиц, соответствующих схеме предоставленной структуры данных.
-К именам таблиц прибавляется префикс, указанный в конфигурационном файле. Таким образом структура данных описыватся по следующему принципу:
+Модели данных - структура таблиц, с полями, ключами и взаимосвязями - представляются отдельными классами и хранятся в подпапке "models" внутри папки модуля. Инсталляция модуля начинается с генерации необходимых таблиц, соответствующих схеме предоставленной структуры данных.
+Пример описания структуры таблицы "{prefix}core_modules":
 {{{
 class xbkModule_Record extends Doctrine_Record
 {
@@ -12,9 +12,11 @@ class xbkModule_Record extends Doctrine_Record
     {
         $this->hasMany('xbkSection_Record as Section', array('local' => 'id', 'foreign' => 'module_id'));
         $this->hasMany('xbkTemplateModule_Record as TemplateModule', array('local' => 'id', 'foreign' => 'module_id'));
-        $this->hasMany('xbkEvent_Record as Event', array('local' => 'id', 'foreign' => 'module_id'));
-        $this->hasMany('xbkEventHandler_Record as EventHandler', array('local' => 'id', 'foreign' => 'module_id'));
         $this->hasMany('xbkLang_Record as Lang', array('local' => 'id', 'foreign' => 'module_id'));
+        $this->hasMany('xbkPrivilege_Record as Privilege', array('local' => 'id', 'foreign' => 'module_id'));
+        $this->hasMany('xbkExtensionPoint_Record as ExtensionPoint', array('local' => 'id', 'foreign' => 'module_id'));
+        $this->hasMany('xbkExtension_Record as Extension', array('local' => 'id', 'foreign' => 'module_id'));
+        $this->hasMany('xbkBlockType_Record as BlockType', array('local' => 'id', 'foreign' => 'module_id'));
     }
 
     public function setTableDefinition()
@@ -23,16 +25,26 @@ class xbkModule_Record extends Doctrine_Record
 
     	$this->setTableName($CONFIG['db']['table_prefix'].'core_modules');
 
-        $this->hasColumn('group', 'string', 20, array('notnull' => true));
-        $this->hasColumn('name', 'string', 50, array('notnull' => true, 'unique' => true));
+        $this->hasColumn('project', 'string', 50, array('notnull' => true, 'unique' => true));
+        $this->hasColumn('system', 'boolean');
         $this->hasColumn('version', 'string', 20);
         $this->hasColumn('xbk_version', 'string', 20);
-        $this->hasColumn('config', 'string', null);
-        $this->hasColumn('current_migration', 'integer', 3);
+        $this->hasColumn('dependencies', 'array', 10000);
+        $this->hasColumn('class', 'string', 100);
+        $this->hasColumn('weight', 'float');
+        $this->hasColumn('config', 'array', 10000);
+        $this->hasColumn('migration_required', 'integer', 3);
+        $this->hasColumn('migration_current', 'integer', 3);
         $this->hasColumn('active', 'boolean', null, array('default' => false));
     }
 
 }
+
 }}}
 
-Вся дальнейшая работа с данными производится как с обычными объектами.
+Базовым классом модели данных является класс "Doctrine_Record". Имя класса следует задавать с суффиксом "Record", чтобы в процессе работы с его объектом можно было легко отличать от объектов иного назначения.
+Описание свойств и полей таблицы задаётся внутри метода "setTableDefinition()". Метод "setTableName()" задаёт имя таблицы. Для системных модулей, а также модулей многоразового использования, обязательно следует добавлять к имени таблицы префикс, взятый из глобального конфигурационного массива. Каждым вызовом методом "hasColumn()" задаётся поле таблицы с указанием имени, типа, длины и доп. атрибутов. Внутри метода "setTableDefinition()" задаётся описание ключей - обычных и внешних.
+Вся дальнейшая работа с данными производится как с обычными объектами, а также при формировании DQL-запросов. Подробное описание работы с моделями данных можно найти на сайте ORM Doctrine:
+ * <a href="http://www.doctrine-project.org/documentation/manual/1_1/en/defining-models" target="_blank">Введение в модельную архитектуру</a>
+ * <a href="http://www.doctrine-project.org/documentation/manual/1_1/en/working-with-models" target="_blank">Работа с моделями</a>
+ * <a href="http://www.doctrine-project.org/documentation/manual/1_1/en/dql-doctrine-query-language" target="_blank">Sql-диалект DQL (Doctrine Query Language)</a>

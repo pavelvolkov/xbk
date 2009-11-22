@@ -13,3 +13,19 @@
  * html-поле
  * кнопка отправки формы
  * группа кнопок отправки формы
+
+Чтобы построить свёрстанную web-форму, для начала необходимо инстанцировать объект класса "xbkForm", сообщив ему ряд параметров через конструктор:
+{{{
+$values = Array();
+$options = Array(
+    'extendable' => true,
+    'title' => 'My form',
+    'action' => $this->uri()->build(),
+    'method' => 'post', 
+    'width' => '400px',
+    'validate' => Array($this, 'validateForm'),
+    'handle' => Array($this, 'handleForm'),
+);
+$this->loadClass('xbkForm', 'form', true);
+$Form = $this->factory('xbkForm', 'my_form', $options, $values);
+}}}

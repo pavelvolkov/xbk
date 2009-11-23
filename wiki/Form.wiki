@@ -85,7 +85,7 @@ $rendered_form = $Form->build();
 
 ==Валидация и обработка==
 
-Валидация - это проверка введённых данных на корректность заполнения. Callback-медод валидации сообщается объекту формы в опции "validate". Пример метода валидации:
+Валидация - это проверка введённых данных на корректность заполнения. Callback-медод валидации сообщается объекту формы в опции "validate". Методов валидации может быть несколько. Пример метода валидации:
 {{{
     /**
      * Валидация формы
@@ -122,97 +122,8 @@ $rendered_form = $Form->build();
     		}
     	}
     	
-    	// Пароль
-    	if (empty($values['pass'])) {
-    		$ErrorStack->addError($this->_LANG['example3_error_pass_empty'], null, 'pass');
-    	} else {   		
-    		if (strlen($values['pass']) < 5) {
-    			$str = str_replace('{min}', 5, $this->_LANG['example3_error_pass_short']);
-    			$ErrorStack->addError($str, null, 'pass');
-    		}
-    		if (strlen($values['pass']) > 30) {
-    			$str = str_replace('{max}', 30, $this->_LANG['example3_error_pass_long']);
-    			$ErrorStack->addError($str, null, 'pass');
-    		}
-    		// Соответствие по символам    		
-    		if (preg_match($pattern, $values['pass']) === 0 ? true : false) {
-    			$ErrorStack->addError($this->_LANG['example3_error_pass_incorrect'], null, 'pass');
-    		}
-    		
-    		// Повторный ввод
-    		if (empty($values['pass2'])) {
-    			$ErrorStack->addError($this->_LANG['example3_error_pass_empty'], null, 'pass2');
-    		} else {
-    			if (strlen($values['pass2']) < 5) {
-    				$str = str_replace('{min}', 5, $this->_LANG['example3_error_pass_short']);
-    				$ErrorStack->addError($str, null, 'pass2');
-    			}
-    			if (strlen($values['pass2']) > 30) {
-    				$str = str_replace('{max}', 30, $this->_LANG['example3_error_pass_long']);
-    				$ErrorStack->addError($str, null, 'pass2');
-    			}
-    			// Соответствие по символам
-    			if (preg_match($pattern, $values['pass2']) === 0 ? true : false) {
-    				$ErrorStack->addError($this->_LANG['example3_error_pass_incorrect'], null, 'pass2');
-    			}    			
-    		}
-    		
-    		$pass_errors = $ErrorStack->getMessagesByFormField('pass');
-    		$pass2_errors = $ErrorStack->getMessagesByFormField('pass2');
-    		if (count($pass_errors) == 0 && count($pass2_errors)) {
-    			if ($values['pass'] != $values['pass2']) {
-    				$ErrorStack->addError($this->_LANG['example3_error_pass_not_equal'], null, 'pass');
-    			}
-    		}
-    	}
-    	
-    	// E-mail
-    	if (empty($values['email'])) {
-    		$ErrorStack->addError($this->_LANG['example3_error_email_empty'], null, 'email');
-    	} else {
-    		$Validate = new Zend_Validate;
-    		$Validate->addValidator(new Zend_Validate_EmailAddress);
-    		$result = $Validate->isValid($values['email']);
-    		if (!$result) {
-    			$ErrorStack->addError($this->_LANG['example3_error_email_invalid'], null, 'email');
-    		}
-    	}
-    	
-    	// Ник
-    	if (empty($values['nik'])) {
-    		$ErrorStack->addError($this->_LANG['example3_error_nik_empty'], null, 'nik');
-    	}
-    	
-    	// ФИО
-    	if (empty($values['fio_f'])) {
-    		$ErrorStack->addError($this->_LANG['example3_error_fio_f_empty'], null, 'fio_f');
-    	}
-    	if (empty($values['fio_i'])) {
-    		$ErrorStack->addError($this->_LANG['example3_error_fio_i_empty'], null, 'fio_i');
-    	}
-    	if (empty($values['fio_o'])) {
-    		$ErrorStack->addError($this->_LANG['example3_error_fio_o_empty'], null, 'fio_o');
-    	}
-    	
-    	if (empty($values['additional'])) {
-    		$ErrorStack->addError($this->_LANG['example3_error_additional_empty'], null, 'additional');
-    	}
-    	$opt = Array('work', 'study', 'work_study', 'without_work', 'pensioner');
-    	if (empty($values['social_status']) ? true : !in_array($values['social_status'], $opt)) {
-    		$ErrorStack->addError($this->_LANG['example3_error_social_status_empty'], null, 'social_status');
-    	}
-    	$opt = Array(11, 12, 13, 21, 22, 23, 31, 32, 33);
-    	if (empty($values['interests']) ? true : (!is_array($values['interests']) ? true : (array_diff($values['interests'], $opt) == $opt))) {
-    		$ErrorStack->addError($this->_LANG['example3_error_interests_empty'], null, 'interests');
-    	}
-    	
-    	// Обработка загрузки файла
-    	if (!empty($this->_FILES['profile_avatar_file']['name'])) {
-    		$ErrorStack->addError($this->_LANG['example3_error_avatar_invalid'], null, 'profile_avatar_file');
-    		if (!empty($values['profile_avatar_crop'])) {
-    			$ErrorStack->addError($this->_LANG['example3_error_avatar_crop_invalid'], null, 'profile_avatar_crop');
-    		}
-    	}
+        // И т. д.
+        ...
     	
     }
 }}}

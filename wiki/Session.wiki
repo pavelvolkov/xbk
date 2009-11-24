@@ -27,3 +27,19 @@ if (isset($this->_COOKIE['my_session_id'])) {
     $this->setCookie('my_session_id', $session_id);
 }
 }}}
+Таков наиболее удобный способ создания объекта сессии. В момент инстанцирования можно сообщить объекту дополнительные аргументы:
+{{{
+// Опции сессии
+$options = Array(
+'lifetime' => 3600,
+);
+// Массив сессионых переменных по-умолчанию
+$default_vars = Array(
+'var1' => 'value1',
+'var2' => 'value2',
+);
+// Создаём новую сессию
+$Session = $this->session(null, $options, $default_vars);
+// Получаем сгенерированный сессионный идентификатор
+$session_id = $Session->getId();
+}}}

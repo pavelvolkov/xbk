@@ -28,3 +28,9 @@ if ($Cache->exists()) {
     $Cache->save($data);
 }
 }}}
+Также можно вручную очистить кеш:
+{{{
+if ($this->hasNewInfo()) {
+    $Cache->clear();
+}
+}}}

@@ -28,7 +28,7 @@ if ($Cache->exists()) {
     $Cache->save($data);
 }
 }}}
-Можно вручную очистить кеш:
+Можно очистить кеш вручную:
 {{{
 if ($this->hasNewInfo()) {
     $Cache->clear();

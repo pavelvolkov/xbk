@@ -46,7 +46,7 @@ $CacheManager = $this->factory('xbkCacheManager');
 }}}
 Уборка мусора (записи кеша с истёкшим временем жизни):
 {{{
-CacheManager->tidy();
+$CacheManager->tidy();
 }}}
 Удаление записей кеша текущего модуля:
 {{{

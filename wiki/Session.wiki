@@ -53,10 +53,6 @@ $session_vars = $Session->load();
 {{{
 $Session->save($session_vars);
 }}}
-Запись - метод "save()":
-{{{
-$Session->save($session_vars);
-}}}
 Сброс - метод "clear()":
 {{{
 $Session->clear();

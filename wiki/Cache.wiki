@@ -34,3 +34,25 @@ if ($this->hasNewInfo()) {
     $Cache->clear();
 }
 }}}
+
+==Менеджер кеша==
+
+Менедер кеша производит операции по уборке мусора и массовому сбросу кешируемой информации.
+
+Инстанцирование объекта "xbkCacheManager":
+{{{
+$this->loadClass('xbkCacheManager', 'core', true);
+$CacheManager = $this->factory('xbkCacheManager');
+}}}
+Уборка мусора (записи кеша с истёкшим временем жизни):
+{{{
+CacheManager->tidy();
+}}}
+Удаление записей кеша текущего модуля:
+{{{
+$CacheManager->clear($this->_Module);
+}}}
+Сброс кеша целиком:
+{{{
+$CacheManager->clearAll();
+}}}

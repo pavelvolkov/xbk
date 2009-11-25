@@ -40,7 +40,7 @@ $config_default = $this->getConfigDefault();
 }}}
 Сохраняет конфигурации:
 {{{
-$this->saveConfig(config);
+$this->saveConfig($config);
 }}}
 Сбрасывает конфиг в умолчания:
 {{{

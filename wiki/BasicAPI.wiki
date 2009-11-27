@@ -149,3 +149,60 @@ public function template ($input, $Cache = null, $options = Array())
 public function phptemplate ($name, $vars = Array())
 }}}
 Возвращает объект "xbkPhptemplate" для дальнейшей работы с ним. Первый параметр - имя шаблона. Второй параметр - массив переменных, сообщённых изначально, где ключ элемента массива - имя переменной, значение элемента массива - значение переменной. Подробнее о шаблонизации "phptemplate" - в специальной главе.
+
+Методы, возвращающие объект "xbkUri": 
+{{{
+public function uri ($link = null);
+public function thisUri ();
+}}}
+Методы, возвращающие параметры внешнего запроса:
+{{{
+public function getRequestParam ($name, $default = null);
+public function getRequestParams ();
+}}}
+Методы, возвращающие путь запроса:
+{{{
+public function getRequestPath ();
+public function getRequestPathArray ();
+public function getRouterPath ();
+public function getRouterPathArray ();
+public function getInnerPath ();
+public function getInnerPathArray ();
+}}}
+Подробнее о внешнем запросе, работе класса "xbkUri" и построении ссылок - в специальной главе.
+
+Метод, возвращающий объект "xbkCache":
+{{{
+public function cache ($key = null, $options = Array());
+}}}
+Подробнее о работе механизма кеширования - в специальной главе.
+
+Метод, возвращающий объект "xbkSession":
+{{{
+public function session ($id = null, $options = null, $default = null);
+}}}
+Подробнее о работе механизма сессий - в специальной главе.
+
+Получение языковых переменных модуля:
+{{{
+public function &getLang ($scope = null);
+}}}
+Возвращает массив языковых переменных данного модуля из области $scope.
+
+Метод, возвращающий объект "xbkExtensionPoint" по имени точки расширения данного модуля:
+{{{
+public function extensionPoint ($name);
+}}}
+Метод, возвращающий массив объектов "xbkExtension" по имени точки расширения данного модуля:
+{{{
+public function extensions ($name);
+}}}
+Метод, возвращающий расширение $extensionName точки расширения $extensionPointName модуля $extensionModule с параметрами $params:
+{{{
+extension ($extensionPointName, $extensionName, $extensionModule = null, $params = Array());
+}}}
+Метод, возвращающий массив с информацией о подключенных расширениях к точке расширения $name:
+{{{
+public function extensionList ($name);
+}}}
+Подробнее о работе с механизмом точки расширения - в специальной главе.

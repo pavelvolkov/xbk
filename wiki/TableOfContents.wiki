@@ -4,6 +4,7 @@
  * [Introduction Введение в систему]
  * [Installation Установка]
  * [ModuleArchitecture Модульная архитектура]
+ * [BasicAPI Базовый API]
  * [DeclarationFile Декларационный файл "module.xml"]
  * [ModuleMeta Мета-класс модуля]
  * [Models Модели данных]

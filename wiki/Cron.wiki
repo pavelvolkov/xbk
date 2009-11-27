@@ -18,3 +18,66 @@ $CONFIG['cron']['max_wait_time'] = 20*60;
 Автозапуск cron удобно делать на локальном компьютере во время отладки проекта. Время прерывания "interrupt_time" ограничивает временной лимит выполнения процедур, после чего следующая процедура, намеченная на данный запуск, откладывается на следующий. Cron ведёт свой журнал, в котором фиксирует время запуска, время завершения и запущенные процедуры. Если предыдущий запуск не был обозначен как завершённый, следующий пуск производиться не будет, пока не истечёт время время ожидания "max_wait_time".
 
 Журнал запуска "cron" можно посмотреть в разделе "Отчёты" панели суперадмина. Там же можно запустить крон вручную.
+
+Интерфейс точки подключения "cron":
+{{{
+/**
+ * xbkCronEP
+ *
+ * Точка расширения cron
+ *
+ * @version    1.0   2009-10-18
+ * @package    xBk
+ * @author     Pavel Bakanov
+ * @license    LGPL
+ * @link       http://bakanov.info
+ */
+
+class xbkCronEP extends xbkContextObject
+{
+	
+    /**
+     * Заголовок процедуры cron
+     *
+     * @access      public
+     * @return      string
+     */
+    public function getTitle ()
+    {
+    	return 'Cron action';
+    }	
+	
+    /**
+     * Проверка необходимости запуска на выполнение
+     *
+     * @access      public
+     * @return      boolean
+     */
+    public function isNeed ()
+    {
+    	return true;
+    }
+    
+    /**
+     * Возвращает минимальный период запуска этого действия cron в секундах
+     *
+     * @access      public
+     * @return      integer | null
+     */
+    public function getPeriodMin ()
+    {
+    	// 5-минутный интервал
+    	return 5*60;
+    }    	
+
+    /**
+     * Запуск на выполнение
+     *
+     * @access      public
+     */
+    public function execute ()
+    {
+    }
+
+}
+}}}

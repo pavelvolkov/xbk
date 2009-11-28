@@ -12,6 +12,7 @@
  * [ModuleConfig Конфигурации модуля]
  * [Section Секция]
  * [Phptemplate Шаблонизатор "phptemplate"]
+ * [ExtensionPoint Механизм точки расширения]
  * [Uri Механизм построения ссылок]
  * [Form Механизм построения web-форм]
  * [Cache Кеш]

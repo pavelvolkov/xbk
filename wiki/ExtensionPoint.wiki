@@ -164,3 +164,20 @@ foreach ($extensions as $Ext) {
     }
 }
 }}}
+Метод "extensions()" аналогично методу "extensionPoint()" принимает параметры и возвращает массив объектов-прокси "xbkExtension" всех подключенных расширений. Объект-прокси класса "xbkExtension" связан с объектом конкретного расширение и транслирует запросы к нему. Объект-прокси также предоставляет ряд методов:
+{{{
+// Возвращает объект xbkExceptionStack для данного расширения
+public function _getExceptionStack ();
+// Получает имя расширения
+public function _getName ();
+// Получает класс расширения
+public function _getClass ();
+// Получает имя модуля точки расширения
+public function _getModule ();
+// Получает вес
+public function _getWeight ();
+// Получает имя точки расширения
+public function _getExtensionPointName ();
+// Получает имя модуля точки расширения
+public function _getExtensionPointModule ();
+}}}

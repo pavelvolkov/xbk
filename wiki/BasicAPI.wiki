@@ -218,3 +218,187 @@ public function isModuleInstalled ($moduleName = null);
 public function defineModule ($moduleName)
 }}}
 Под загрузкой модуля понимается формирование окружения данного модуля и запуск метода "initialize()" мета-класса модуля. Обычно модуль загружается автоматически при инстанцировании объекта какого-нибудь класса данного модуля, но иногда возникает необходимость загрузить модуль без инстанцирования класса, для чего следует использовать данный метод. Метод возвращает true либо false в зависимости от того, установлен данный модуль или нет.
+
+Возвращает путь к текущему модулю:
+{{{
+public function getModulePath ();
+}}}
+
+Возвращает web-путь к текущему модулю:
+{{{
+public function getModuleWebPath ();
+}}}
+
+Возвращает объект "xbkFileData" для текущего модуля:
+{{{
+public function getFileData ();
+}}}
+Объект "xbkFileData" предназначен для работы с файловой информацией модуля. Подробности - в специальной главе.
+
+Методы работы с переадресацией:
+{{{
+public function setRedirect ($link);
+public function getRedirect ();
+public function isRedirect ();
+}}}
+
+Методы работы с установкой/снятием cookies:
+{{{
+public function setCookie ($name, $value = '', $expire = null, $path = null, $domain = null, $secure = null, $httponly = null);
+public function unsetCookie ($name);
+public function hasCookies ();
+public function getCookies ();
+}}}
+
+Методы работы с кофигурациями модуля:
+{{{
+public function &loadConfig ();
+public function &getConfig ();
+public function getConfigDefault ();
+public function saveConfig ($config);
+public function resetConfig ();
+}}}
+Подробнее о конфигурациях модуля - в специальной главе.
+
+Метод, возвращающий IP-адрес пользователя:
+{{{
+public function getIp ();
+}}}
+
+Метод, возвращающий cookie-идентификатор пользователя:
+{{{
+public function getCookieId ();
+}}}
+
+Метод, возвращающий кол-во секунд, прошедшие с начала выполнения:
+{{{
+public function getElapsedTime ();
+}}}
+
+Проверка пользовательской привилегии:
+{{{
+protected function isUserAllow ($privilege);
+}}}
+
+Проверка пользовательской привилегии:
+{{{
+protected function isUserAllow ($privilege);
+}}}
+Проверка, авторизован ли пользователь:
+{{{
+protected function isUserLoggedIn ();
+protected function isUserSignedIn ();
+protected function isUserAuthorized ();
+}}}
+Подробнее о системе пользователей и назначении прав - в специальной главе.
+
+Возвращает текущую кодировку:
+{{{
+public function getCharset ();
+}}}
+
+Возвращает текущую локаль:
+{{{
+public function getLocale ();
+}}}
+
+Возвращает текущую кодировку исходящих писем:
+{{{
+public function getMailCharset ();
+}}}
+
+Подключает файл css в шапку:
+{{{
+public function addCss ($name, $weight = null, $skin = null);
+}}}
+Первый параметр - имя файла без расширения в папке скина в подпапке "css/". Второй параметр - вес, определяющий порядок вызова относительно других css-файлов. Третий параметр - имя скина. Если третий параметр не указан, файл берётся из скина по-умолчанию.
+
+Подключает файл js в шапку:
+{{{
+public function addJs ($name, $weight = null, $skin = null);
+}}}
+Первый параметр - имя файла без расширения в папке скина в подпапке "css/". Второй параметр - вес, определяющий порядок вызова относительно других js-файлов. Третий параметр - имя скина. Если третий параметр не указан, файл берётся из скина по-умолчанию.
+
+Подключает js-библиотеку:
+{{{
+public function addJsLib ($name);
+}}}
+Данный метод предпочтительно использовать во избежание дублирований, когда разные модули используют одни и те же яваскриптовые библиотеки. Поддерживаются следующие библиотеки: "jquery", "mootools", "prototype", "dojo".
+
+Строит теги подключения css-файлов:
+{{{
+public function buildCssTags ();
+}}}
+
+Строит теги подключения js-файлов:
+{{{
+public function buildJsTags ();
+}}}
+
+Устанавливает разделитель частей заголовка:
+{{{
+public function setTitlePieceSeparator ($sep);
+}}}
+
+Возвращает разделитель частей заголовка:
+{{{
+public function getTitlePieceSeparator ();
+}}}
+
+Устанавливает заголовок:
+{{{
+public function setTitle ($title);
+}}}
+
+Дополняет заголовок:
+{{{
+public function addTitle ($title);
+}}}
+
+Получает заголовок:
+{{{
+public function getTitle ();
+}}}
+
+Получает массив частей заголовка:
+{{{
+public function getTitlePieces ();
+}}}
+
+Строит тег "<title>":
+{{{
+public function buildTitleTag ();
+}}}
+
+Добавляет информацию для мета-тега:
+{{{
+public function addMeta ($name = null, $content = null, $attr = Array());
+}}}
+Параметр $name - содержимое атрибута "name" в мета-теге. Параметр $content -  содержимое атрибута content в мета-теге. Параметр $attr - ассоциативный массив остальных атрибутов (ключ - имя атрибута, значение - значение арибута).
+
+Задаёт информацию мета-тегов:
+{{{
+public function setMeta ($meta = Array());
+}}}
+
+Получает информацию мета-тегов:
+{{{
+public function getMeta ();
+}}}
+
+Строит мета-теги:
+{{{
+public function buildMetaTags ();
+}}}
+
+Отладочный метод "trace()":
+{{{
+public function trace ();
+}}}
+Метод "trace()" принимает любое кол-во параметров любого типа. Он добавляет информацию в стек, которая затем отображется внутри чёрно-белого окна на странице. Если передать массив или объект, результат будет отображаться как при вызове метода "print_r()".
+
+Записывает сообщение в системный журнал:
+{{{
+public function log ($message, $severity = null, $options = Array())
+}}}
+Параметр $message - текст сообщения, $severity - уровень тревоги ("emerg", "alert", "critical", "error", "warning", "notice", "info", "debug"). Массив $options принимает две возмоные опции: "link" - ссылка, "link_title" - заголовок ссылки.

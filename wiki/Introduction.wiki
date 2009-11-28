@@ -5,10 +5,8 @@
 
 ==Системные требования==
  * PHP версии >= 5.2. 
- * расширения "PDO", "mb_string"
+ * расширения "PDO", "mb_string", "Zend Optimizer" (предпочтительно)
  * модуль web-сервера Apache "mod_rewrite". 
-
-Желательно также наличие модуля php "Zend Optimizer".
 
 ==Сторонние библиотеки в составе xBk==
  * ORM "Doctrine"

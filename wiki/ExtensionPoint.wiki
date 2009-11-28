@@ -76,7 +76,62 @@ class MyModule_MyEP extends xbkContextObject
 Чтобы подключиться к точке расширения, необходимо создать класс с таким же интерфейсом, а в декларационном файле "module.xml" объявить подключение следующим образом:
 {{{
 <extensions>
-    <extension name="my_extension" class="MyOtherModule_MyExtension" weight="10" extensionPoint="my_extension_point" extensionPointModule="my_module" />
+    <extension name="login" class="MyOtherModule_LoginExtension" weight="10" extensionPoint="my_extension_point" extensionPointModule="my_module" />
 </extensions>
 }}}
 Атрибут "name" - имя расширения, "class" - класс расширения, "weight" - вес, определяющий порядок подключения для нескольких расширений на одну точку, "extensionPoint" - имя точки расширения, "extensionPointModule" - модуль точки расширения.
+
+Пример класса расширения:
+{{{
+class MyOtherModule_LoginExtension extends xbkContextObject
+{
+
+    /**
+     * Объект xbkUri
+     *
+     * @access      public
+     * @var         object xbkUri
+     */
+    public $Uri;
+
+    /**
+     * Конструктор класса
+     *
+     * @access      public
+     * @param       object xbkUri
+     */
+    public function __construct2 ($Uri)
+    {
+    	$this->Uri = $Uri;
+    }
+
+    /**
+     * Получение содержимого
+     *
+     * @access     public
+     * @return     string
+     */
+    public function getTitle ()
+    {
+    	return $this->_LANG['login_title'];
+    }
+
+    /**
+     * Получение содержимого
+     *
+     * @access     public
+     * @return     string
+     */
+    public function getContent ()
+    {
+        $tmpl = $this->phptemplate('login');
+
+        $ActionUri = clone $this->Uri;
+
+        $tmpl->addVar('action', $ActionUri->build());
+
+    	return $tmpl->build();
+    }
+
+}
+}}}

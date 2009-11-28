@@ -30,3 +30,4 @@
     <extension name="my_extension" class="MyModule_MyExtension" />
 </extension>
 }}}
+Атрибут "name" - идентификационное имя точки расширения, "class" - класс точки расширения, в котором объявляется интерфейс подключения.

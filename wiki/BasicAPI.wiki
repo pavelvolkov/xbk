@@ -365,7 +365,7 @@ public function getTitle ();
 public function getTitlePieces ();
 }}}
 
-Строит тег "<title>":
+Строит тег "`<title>`":
 {{{
 public function buildTitleTag ();
 }}}
@@ -399,6 +399,28 @@ public function trace ();
 
 Записывает сообщение в системный журнал:
 {{{
-public function log ($message, $severity = null, $options = Array())
+public function log ($message, $severity = null, $options = Array());
 }}}
 Параметр $message - текст сообщения, $severity - уровень тревоги ("emerg", "alert", "critical", "error", "warning", "notice", "info", "debug"). Массив $options принимает две возмоные опции: "link" - ссылка, "link_title" - заголовок ссылки.
+
+Выбрасывает "xbkException":
+{{{
+public function throwException ($message = null, $code = 0);
+}}}
+$message - текст исключения, $code - код.
+
+Возвращает свойства объекта:
+{{{
+public function getVars ();
+}}}
+Данный метод используется шаблонизатором "patTemplate".
+
+Возвращает строковое представление объекта:
+{{{
+public function serialize ($Object);
+}}}
+
+Восстанавливает объект из строкового представления:
+{{{
+public function unserialize ($string);
+}}}

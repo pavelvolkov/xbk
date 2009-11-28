@@ -79,3 +79,4 @@ class MyModule_MyEP extends xbkContextObject
     <extension name="my_extension" class="MyOtherModule_MyExtension" weight="10" extensionPoint="my_extension_point" extensionPointModule="my_module" />
 </extensions>
 }}}
+Атрибут "name" - имя расширения, "class" - класс расширения, "weight" - вес, определяющий порядок подключения для нескольких расширений на одну точку, "extensionPoint" - имя точки расширения, "extensionPointModule" - модуль точки расширения.

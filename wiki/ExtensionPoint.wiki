@@ -1,4 +1,4 @@
-=Расширение функциноальности через точку расширения=
+=Расширение функциональности через точку расширения=
 
 Цитата из википедии (http://ru.wikipedia.org/wiki/Plug-in):
 
@@ -24,10 +24,58 @@
 
 Прицип работы точки расширения аналогичен работе электрической розетки, к которой может подключиться несколько устройств с интерфейсом 220 В и определённой формой штепселя. По-сути, подключаемое расширение - это набор функций (методов класса) обратного вызова.
 
-Точка расширения объявляется в декларационном файле "module.xml" в группе тегов "`<extensions />`":
+Точка расширения объявляется в декларационном файле "module.xml" в группе тегов "`<extensionPoints />`":
 {{{
-<extensions>
-    <extension name="my_extension" class="MyModule_MyExtension" />
-</extension>
+<extensionPoints>
+    <extensionPoint name="my_extension_point" class="MyModule_MyEP" />
+</extensionPoints>
 }}}
 Атрибут "name" - идентификационное имя точки расширения, "class" - класс точки расширения, в котором объявляется интерфейс подключения.
+
+Пример класса точки расширения:
+{{{
+class MyModule_MyEP extends xbkContextObject
+{
+
+    /**
+     * Конструктор класса
+     *
+     * @access      public
+     */
+    public function __construct2 (xbkUri $Uri)
+    {
+
+    }
+
+    /**
+     * Получение содержимого
+     *
+     * @access     public
+     * @return     string
+     */
+    public function getTitle ()
+    {
+    	return 'Unnamed';
+    }
+
+    /**
+     * Получение содержимого
+     *
+     * @access     public
+     * @return     string
+     */
+    public function getContent ()
+    {
+    	return '';
+    }
+
+}
+}}}
+Пустые методы точки расширения определяют её интерфейс, а возвращаемые значения - значения по-умолчанию.
+
+Чтобы подключиться к точке расширения, необходимо создать класс с таким же интерфейсом, а в декларационном файле "module.xml" объявить подключение следующим образом:
+{{{
+<extensions>
+    <extension name="my_extension" class="MyOtherModule_MyExtension" weight="10" extensionPoint="my_extension_point" extensionPointModule="my_module" />
+</extensions>
+}}}

@@ -32,7 +32,7 @@
  * *enforceSSL* - принудительная переадресация на SSL-протокол;
  * *enforceNonSSL* - принудительная переадресация c SSL-протокола обратно;
 
-Работа с классом секции, указанный в атрибуте "class", производится следующим образом:
+Класс указывается в атрибуте "class". Работа с классом секции производится следующим образом:
 {{{
 class MyModule_LoginSection extends xbkSection
 {
@@ -48,10 +48,60 @@ class MyModule_LoginSection extends xbkSection
 
         $tmpl = $this->phptemplate('login');
         $tmpl->addVar('action', $this->uri()->build());
+
         $this->setContent($tmpl->build());
     }
 
 }
 
 ?>
+}}}
+
+Основными методами здесь являются "setTitle()" и "setContent()", устанавливающие, соответсвенно, заголовок и содержимое. Такая схема работы справедлива для секций типа "node" и "page".
+
+Методы, объявленные в классе "xbkSection", которые следует использовать:
+{{{
+public function setType ($type);
+public function getType ();
+}}}
+Можно динамически менять тип секции методом "setType()" и получать текущий тип методом "getType()".
+
+Следующие методы устанавливают и получают атрибут "enforceSSL":
+{{{
+public function setEnforceSSL ($enforceSSL);
+public function isEnforceSSL ();
+}}}
+Аналогично для "enforceNonSSL":
+{{{
+public function setEnforceNonSSL ($enforceNonSSL);
+public function isEnforceNonSSL ();
+}}}
+Устанавливает содержимое и возвращает установленное содержимое:
+{{{
+public function setContent ($content);
+public function getContent ();
+}}}
+Устанавливает http-заголовок и получает http-заголовки:
+{{{
+public function setHeader ($header);
+public function getHeaders ();
+}}}
+Устанавливает и возвращает тип изображения (jpeg, gif, png) для секции типа "image":
+{{{
+public function setImageType ($type);
+public function getImageType ();
+}}}
+Устанавливает и возвращает тип документа для секции типа "document":
+{{{
+public function setDocumentType ($type);
+public function getDocumentType ();
+}}}
+Устанавливает и возвращает имя файла для секции типа "file":
+{{{
+public function setFilename ($filename);
+public function getFilename ();
+}}}
+Устанавливает секцию 404:
+{{{
+public function set404 ();
 }}}

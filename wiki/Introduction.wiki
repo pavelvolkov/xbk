@@ -8,6 +8,8 @@
  * расширения "PDO", "mb_string"
  * модуль web-сервера Apache "mod_rewrite". 
 
+Желательно также наличие модуля php "Zend Optimizer".
+
 ==Сторонние библиотеки в составе xBk==
  * ORM "Doctrine"
  * шаблонизатор "patTemplate"

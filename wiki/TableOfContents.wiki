@@ -10,6 +10,7 @@
  * [Models Модели данных]
  * [Migrations Миграции данных]
  * [ModuleConfig Конфигурации модуля]
+ * [Section Секция]
  * [Phptemplate Шаблонизатор "phptemplate"]
  * [Uri Механизм построения ссылок]
  * [Form Механизм построения web-форм]

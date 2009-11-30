@@ -68,10 +68,10 @@ $inner_path = $this->getInnerPath();
 $inner_path_array = $this->getInnerPathArray();
 }}}
 Первый метод вернёт значение "local/task", второй - массив:
-{{{
-Array
+`Array
 (
     [0] => local
     [1] => task
-)
-}}}
+)`
+
+Первичное построение

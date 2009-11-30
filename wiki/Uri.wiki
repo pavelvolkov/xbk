@@ -1,80 +1,20 @@
-*Данная информация устарела, будет переработана в скором времени.*
+=Внешний запрос и механизм ссылок=
 
-Класс xbkUri предоставляет ряд методов стандартных операций над ссылками. Ссылка (url) или uri в широком понимании здесь отображает иерархический путь к искомой секции, перечень параметров в виде строки запроса, схему соединения и поддомены от основного домена. В основу генерации ссылки от текущей или любой другой заложены принципы дополнения, наследования, исключения, переключения её компонентов. В качестве составляющих компонентов uri здесь рассматриваются схема соединения ("http", "https"), внутренний путь по виду напоминающий каталожный, и классический запрос после вопросительного знака для передачи внешних параметров.
+Механизм ссылок предоставляет функционал для построения внутренних ссылок и реализован в виде класса "xbkUri". Данный механим предпочтителен для обеспечения гибкости в проектировании связанных страниц.
 
-Работа с uri подобного вида является основным назначением данного класса:
+Ссылку url можно условно разделить на следующие компоненты:
+ * *scheme* - протокол соединения;
+ * *host* - имя хоста;
+ * *port* - порт;
+ * *user* - имя пользователя;
+ * *pass* - пароль;
+ * *path* - путь;
+ * *query* - строка запроса;
+ * *fragment* - фрагмент (якорь на странице).
+Параметры *user* и *pass* характерны для ftp-соединения.
+
+Пример адреса:
 {{{
-http://my.domain.com/path/to/section/?param1=value1&param2=value2
+https://my.domain.com/path/to/site/path/to/section/local/task?var1=value1&var2=value2#form
 }}}
-
-Рассмотрим несколько примеров работы с вышеуказанной ссылкой, принимая во внимание, что она является текущим внешним запросом.
-
-{{{
-$uri =& $this->factory('xbkUri');
-
-// Вывод текущей ссылки, исключая строку параметров, так как наследование ещё не было задано
-$uri1 = $uri->build(); // Возвращает '/path/to/section/'
-
-// Сообщает дополнительные параметры
-$uri2 = $uri->build('param3=value3&param4=value4'); // Возвращает '/path/to/section/?param3=value3&param4=value4'
-
-// Сообщает дополнительные параметры в виде массива
-$uri3 = $uri->build(Array('param3' => 'value3', 'param4' => 'value4')); // Возвращает '/path/to/section/?param3=value3&param4=value4'
-
-// Установка списка наследуемых параметров
-$uri->inherit('param1&param2');
-$uri4 = $uri->build(); // Возвращает '/path/to/section/?param1=value1&param2=value2'
-$uri5 = $uri->build('param3=value3&param4=value4'); // Возвращает '/path/to/section/?param1=value1&param2=value2&param3=value3&param4=value4'
-
-// Отмена наследования параметров
-$uri->noInherit('param1&param2');
-$uri5 = $uri->build(); // Возвращает '/path/to/section/
-
-// Установка списка наследуемых параметров в виде массива
-$uri->inherit(Array('param1', 'param2'));
-$uri6 = $uri->build(); // Возвращает '/path/to/section/?param1=value1&param2=value2'
-
-// Отмена наследования параметров в виде массива
-$uri->noInherit(Array('param1', 'param2'));
-
-// Исключение всех наследуемых параметров
-$uri->noInheritAll();
-$uri7 = $uri->build(); // Возвращает '/path/to/section/'
-
-// Переход на уровень вверх
-$uri->gotoParent();
-$uri8 = $uri->build(); // Возвращает '/path/to/'
-
-// Переход на уровень вниз
-$uri->gotoChild('section2');
-$uri9 = $uri->build(); // Возвращает '/path/to/section2/'
-
-// Переход на соседнюю ветку смежного уровня
-$uri->gotoBrother('section3');
-$uri9 = $uri->build(); // Возвращает '/path/to/section3/'
-
-// Задание произвольного пути от корня
-$uri->goto('/another/path/to/another/section/');
-$uri10 = $uri->build(); // Возвращает '/another/path/to/another/section/'
-
-// Установка другого протокола соединения
-$uri->setScheme('https');
-$uri11 = $uri->build(); // Возвращает 'https://my.domain.com/another/path/to/another/section/'
-
-// Переключение протокола соединения на противоположный
-$uri->swapScheme();
-$uri12 = $uri->build(); // Возвращает '/another/path/to/another/section/'
-
-// Получить текущий протокол соединения
-$currentScheme = $uri->getScheme(); // Возвращает 'http'
-
-// Получить текущий путь
-$currentPath = $uri->getPath(); // Возвращает another/path/to/another/section/
-
-// Получить текущий путь в виде массива веток в порядке убывания
-$currentPathArray = $uri->getPathArray(); // Возвращает Array('another', 'path', 'to', 'another', 'section')
-
-// Устанавливает текущую ссылку
-$uri->setThisUri();
-$uri13 = $uri->build(); // Возвращает /path/to/section/?param1=value1&param2=value2
-}}}
+Здеь протокол соединения - "https", хост - "my.domain.com", путь - "path/to/site/path/to/section/local/task", строка запроса - "var1=value1&var2=value2", фрагмент - "form".

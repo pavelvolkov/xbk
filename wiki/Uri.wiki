@@ -111,4 +111,34 @@ $Uri = $this->uri();
 $result1 = $Uri->goto('path/to/other/section')->build();
 $result2 = $Uri->goto(Array('path', 'to', 'other', 'section'))->build();
 }}}
-Оба варианта дают один тот результат "/path/to/site/path/to/other/section". 
+Оба варианта дают результат "/path/to/site/path/to/other/section".
+
+Метод "gotoInner()" используется для замены внутреннего пути запроса в рамках текущей секции:
+{{{
+$Uri = $this->uri();
+$result1 = $Uri->gotoInner('inner/path')->build();
+$result2 = $Uri->gotoInner(Array('inner', 'path'))->build();
+}}}
+Оба варианта дают результат "/path/to/site/path/to/section/inner/path".
+
+Метод "gotoParent()" осуществляет переход на уровень выше относительно текущего пути:
+{{{
+$Uri = $this->uri();
+$result = $Uri->gotoParent()->build();
+}}}
+Данный пример возвращает "/path/to/site/path/to/section/local". 
+
+Метод "gotoBrother()" осуществляет переход на соседний уровень относительно текущего пути:
+{{{
+$Uri = $this->uri();
+$result = $Uri->gotoBrother('task2')->build();
+}}}
+Данный пример возвращает "/path/to/site/path/to/section/local/task2". 
+
+Метод "gotoChild()" осуществляет переход на дочерний уровень относительно текущего пути:
+{{{
+$Uri = $this->uri();
+$result1 = $Uri->gotoChild('child/path')->build();
+$result2 = $Uri->gotoChild(Array('child', 'path'))->build();
+}}}
+Оба варианта дают результат "/path/to/site/path/to/section/local/task/child/path".

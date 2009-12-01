@@ -149,7 +149,7 @@ $Uri = $this->uri();
 $result1 = $Uri->build('var3=value3&var4=value4');
 $result2 = $Uri->build(Array('var3' => 'value3', 'var4' => 'value4'));
 }}}
-Оба варианта дают результат "/path/to/site/path/to/section/local/task?var3=value3&var4=value4".
+Оба варианта дают результат "`/path/to/site/path/to/section/local/task?var3=value3&var4=value4`".
 
 В метод "build()" можно подставить любой структуры массив, который после перехода по ссылке будет преобразован в массив `$this->_GET` в исходном виде:
 {{{
@@ -162,7 +162,7 @@ $array = Array(
 );
 $result = $this->uri()->build($array);
 }}}
-Результат: "/path/to/site/path/to/section/local/task?simplekey=simplevalue&subarray[subkey1]=subvalue1&subarray[subkey2]=subvalue2".
+Результат: "`/path/to/site/path/to/section/local/task?simplekey=simplevalue&subarray[subkey1]=subvalue1&subarray[subkey2]=subvalue2`".
 
 Наследование текущих get-аргументов осуществляется методом "inherit()", отмена наследования - методом "noInherit()". Оба метода принимают в качестве параметра массив имён get-аргументов. Метод "noInheritAll()" отменяет наследование всех аргументов. Нижеследующие пример наглядно демонстрирует работу методов наследования:
 {{{

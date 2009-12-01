@@ -105,3 +105,10 @@ $result2 = $Uri->build();
 {{{
 $result2 = $this->uri()->setThisUri()->build();
 }}}
+Метод "goto()" используется для замены текущего пути запроса:
+{{{
+$Uri = $this->uri();
+$result1 = $Uri->goto('path/to/other/section')->build();
+$result2 = $Uri->goto(Array('path', 'to', 'other', 'section'))->build();
+}}}
+Оба варианта дают один тот результат "/path/to/site/path/to/other/section". 

@@ -176,7 +176,7 @@ $result3 = $Uri->build();
 }}}
 Первый вариант даёт результат "/path/to/site/path/to/section/local/task?var1=value1&var2=value2", второй - "/path/to/site/path/to/section/local/task?var2=value2", третий - "/path/to/site/path/to/section/local/task".
 
-Разовую отмену наследования get-аргументов можно делать через метод "build()":
+Разовую отмену наследования get-аргументов можно делать в методе "build()":
 {{{
 $Uri = $this->uri();
 $Uri->inherit(Array('var1', 'var2'));

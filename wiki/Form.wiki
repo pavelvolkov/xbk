@@ -233,7 +233,7 @@ class MyModule_LoginFormExtension extends xbkContextObject {
      * @param       object xbkForm
      */
     public function alterForm ($Form) {        
-        if ($Form->getId() == 'my_form') {
+        if ($Form->getID() == 'my_form') {
             ...
         }
     }

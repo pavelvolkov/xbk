@@ -215,10 +215,10 @@ $rendered_form = $Form->build();
 
 Если модуль "Генератор веб-форм" установлен, доступна точка расширения "form" этого модуля. Всякий раз, когда запускется метод "build()", запрашивается эта точка расширения. Интерфейс точки расширения содержит единственный метод "alterForm()", через который передаётся объект формы. Подключившись к точке расширения, можно менять параметры формы, добавлять, изменять, удалять столбцы, методы валидации и обработки.
 
-Схема подключения:
+Схема подключения в файле "module.xml":
 {{{
 <extensions>
-    <extension name="additional_questions" class="MyModule_LoginFormExtension" weight="1" extensionPoint="form" extensionPointModule="form" />
+    <extension name="additional_fields" class="MyModule_LoginFormExtension" weight="1" extensionPoint="form" extensionPointModule="form" />
 </extensions>
 }}}
 
